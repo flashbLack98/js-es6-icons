@@ -103,50 +103,78 @@ const container = document.querySelector(".container");
 console.log("questo è il container", container);
 
 
+
+const arrayTypeAnimal = iconList.filter(singleIcon => singleIcon.type === "animal");
+console.log(arrayTypeAnimal);
+
+const arrayTypeVegetables = iconList.filter(singleIcon => singleIcon.type === "vegetable");
+console.log(arrayTypeVegetables);
+
+const arrayTypeUser = iconList.filter(singleIcon => singleIcon.type === "user");
+console.log(arrayTypeUser);
+
+
 let color = "";
 
 
 
 
-for (i = 0; i < iconList.length; i++) {
-	const singleIcon = iconList[i];
+function generazioneCard(tipoArray) {
+
+	container.innerHTML = "";
+
+	for (i = 0; i < tipoArray.length; i++) {
+		const singleIcon = tipoArray[i];
+
+		const { name, prefix, type, family } = singleIcon;
 
 
-	const typeAnimal = iconList.filter((singleIcon) => {
-		return singleIcon.type === "Animal";
-	});
-	console.log(typeAnimal);
+		//COLORO LE ICONE IN BASE AL TYPE CHE HANNO
+		//se il type è animal allora il colore sarà blu
+		if (type === "user") {
+			color = "text-primary";
+		} //se il type è user allora il colore sarà viola
+		else if (type === "animal") {
+			color = "text-success";
+		}  //se il type è verdure allora il colore sarà arancione 
+		else {
+			color = "text-warning";
+		}
+		console.log(type);
 
-	const { name, prefix, type, family } = singleIcon;
+		const card = `<div class="card">
+					<i class="${family} ${prefix}${name} fs-3 ${color}"></i>
+					<p class="m-0">${name}</p>
+				</div>`;
 
-	//COLORO LE ICONE IN BASE AL TYPE CHE HANNO
-	//se il type è animal allora il colore sarà blu
-	if (type === "user") {
-		color = "text-primary";
-	} //se il type è user allora il colore sarà viola
-	else if (type === "animal") {
-		color = "text-success";
-	}  //se il type è verdure allora il colore sarà arancione 
-	else {
-		color = "text-warning";
+		console.log("questa è una carta", card, "questa è una icona", singleIcon.type);
+
+		container.innerHTML += card;
 	}
-	console.log(type);
-
-	const card = `<div class="card">
-                <i class="${family} ${prefix}${name} fs-3 ${color}"></i>
-                <p class="m-0">${name}</p>
-            </div>`;
-
-	console.log("questa è una carta", card, "questa è una icona", singleIcon.type);
-
-	container.innerHTML += card;
-
-
-
 }
 
-const formType = selectType.value;
-console.log(formType);
+selectType.addEventListener("change", function () {
+	const formType = selectType.value;
+	console.log(formType);
+
+	switch (formType) {
+		case "Vegetable":
+			generazioneCard(arrayTypeVegetables);
+			break;
+
+		case "User":
+			generazioneCard(arrayTypeUser);
+			break;
+
+		case "Animals":
+			generazioneCard(arrayTypeAnimal);
+			break;
+
+		case "All":
+			generazioneCard(iconList);
+			break;
+	}
+});;
 
 
 
@@ -158,7 +186,7 @@ console.log(formType);
 
 //quando nel select c'è User devo stampare solo le card con type User
 
-//quando nel select c'è All devo stampare tutte le card 
+//quando nel select c'è All devo stampare tutte le card
 
 
 
