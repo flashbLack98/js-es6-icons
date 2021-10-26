@@ -1,8 +1,16 @@
+:root{
+    --bs-success-rgb: 15, 15, 175;
+    --bs-warning-rgb: 248, 136, 8;
+    --bs-primary-rgb: 142, 19, 212;
+    --bs-danger-rgb:0, 239, 243 ;
+}
+
+
 .card{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
-    width: 120px;
-    margin: 20px 0;
+    width: calc(100% / 5 - 20px);
+    
 }

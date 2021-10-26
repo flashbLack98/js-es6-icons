@@ -118,7 +118,7 @@ let color = "";
 
 
 
-
+//--------------------------------- INIZIO FUNCTION---------------------------------------------------
 function generazioneCard(tipoArray) {
 
 	container.innerHTML = "";
@@ -152,6 +152,8 @@ function generazioneCard(tipoArray) {
 		container.innerHTML += card;
 	}
 }
+//--------------------------------- FINE FUNCTION ---------------------------------------------------
+
 
 generazioneCard(iconList);
 
