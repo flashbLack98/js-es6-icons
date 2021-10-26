@@ -153,6 +153,8 @@ function generazioneCard(tipoArray) {
 	}
 }
 
+generazioneCard(iconList);
+
 selectType.addEventListener("change", function () {
 	const formType = selectType.value;
 	console.log(formType);
